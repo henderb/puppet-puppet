@@ -10,6 +10,7 @@ class puppet {
 
     service { "puppet":
         require => Package[puppet],
+        subscribe => file[puppetinit],
         enable  => true,
         ensure  => running,
     }

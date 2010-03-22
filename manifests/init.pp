@@ -17,4 +17,10 @@ class puppet {
 
 class puppetmaster {
     package { "puppetmaster":   ensure => installed }
+
+    service { "puppetmaster":
+        require => Package[puppetmaster],
+        enable  => false,
+        ensure  => stopped,
+    }
 }

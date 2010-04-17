@@ -1,9 +1,11 @@
 class puppet {
     package { "puppet":     ensure  => installed }
 
-    config_file { "puppetconf":
+    file { "puppetconf":
         name    => "/etc/puppet/puppet.conf",
         content => "puppet:///puppet/puppet.conf",
+        owner   => root,
+        mode    => 644,
     }
 
     service { "puppet":

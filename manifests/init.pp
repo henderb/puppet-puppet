@@ -24,4 +24,9 @@ class puppetmaster {
         enable  => false,
         ensure  => stopped,
     }
+
+    service { "puppet":
+        enable  => true,
+        ensure  => running,
+    }
 }

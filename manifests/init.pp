@@ -3,7 +3,7 @@ class puppet {
 
     file { "puppetconf":
         name    => "/etc/puppet/puppet.conf",
-        content => "puppet:///puppet/puppet.conf",
+        source  => "puppet:///puppet/puppet.conf",
         owner   => root,
         mode    => 644,
     }

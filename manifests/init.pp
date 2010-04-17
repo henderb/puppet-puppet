@@ -1,16 +1,14 @@
 class puppet {
     package { "puppet":     ensure  => installed }
 
-    # Make sure puppet talks to my server - debian init option file
-    file { "puppetinit":
-        name    => "/etc/default/puppet",
-        content => template("puppet/puppetinit.erb"),
-        owner   => "root",
+    config_file { "puppetconf":
+        name    => "/etc/puppet/puppet.conf",
+        content => "puppet:///puppet/puppet.conf",
     }
 
     service { "puppet":
         require => Package[puppet],
-        subscribe => file[puppetinit],
+        subscribe => file[puppetconf],
         enable  => true,
         ensure  => running,
     }
